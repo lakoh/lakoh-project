@@ -1,0 +1,33 @@
+%nav.main-navbar.navbar.navbar-static-top
+  .navbar-inner
+    .container
+
+      -# This would look like a button on iOS (really?)
+      %a.btn.btn-navbar{data: {toggle: :collapse, target: ".nav-collapse"}}
+        = "test"
+
+
+      .nav-collapse.collapse.navbar-responsive-collapse
+        %ul.nav.navbar-item-list
+          - navbar_item_path = businesses_path
+          %li.navbar-item
+            = link_to navbar_item_path do
+              = "Businesses"
+          - navbar_item_path = new_business_path
+          %li.navbar-item
+            = link_to navbar_item_path do
+              = "New Business"
+          - if current_user
+            %li.navbar-item
+              = link_to destroy_user_session_path do
+                = "Sign out"
+          - else
+            - navbar_item_path = new_user_session_path
+            %li.navbar-item
+              = link_to navbar_item_path, rel: 'nofollow' do
+                = "Sign in"
+
+            - navbar_item_path = new_user_registration_path
+            %li.navbar-item
+              = link_to navbar_item_path, rel: 'nofollow' do
+                = "Sign up"

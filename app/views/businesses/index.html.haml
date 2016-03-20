@@ -1,0 +1,25 @@
+%h1
+  = "Listing businesses"
+
+%table
+  %thead
+
+    %tr
+      %th
+        = "Name"
+      %th
+        = "Type"
+      %th
+      %th
+      %th
+  %tbody
+    - @businesses.each do |business|
+      %tr
+        %td= business.name
+        %td= business.type
+        %td= link_to 'Show', business
+        %td= link_to 'Edit', edit_business_path(business)
+        %td= link_to 'Destroy', business, method: :delete, data: { confirm: 'Are you sure?' }
+
+%p
+= link_to 'New Business', new_business_path
